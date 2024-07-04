@@ -67,11 +67,4 @@ router.get("/related-product/:pid/:cid", relatedProductController);
 // Category wise product
 router.get("/product-category/:slug", productCategoryController);
 
-// Payments routes (Commented out as Braintree is not used)
-// Token
-// router.get("/braintree/token", braintreeTokenController);
-
-// Payments
-// router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
-
 export default router;

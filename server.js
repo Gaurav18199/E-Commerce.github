@@ -8,37 +8,36 @@ import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
 
-//configure env
+// Configure environment variables
 dotenv.config();
 
-//databse config
+// Connect to the database
 connectDB();
 
-//rest object
+// Create an Express application
 const app = express();
 
-//middelwares
+// Apply middlewares
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-//routes
+// Define routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 
-//rest api
+// Define a simple route for the root URL
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to ecommerce app</h1>");
 });
 
-//PORT
+// Define the port from the environment variables or use 8080 by default
 const PORT = process.env.PORT || 8080;
 
-//run listen
+// Start the server
 app.listen(PORT, () => {
   console.log(
-    `Server Running on ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan
-      .white
+    `Server Running in ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan.white
   );
 });
